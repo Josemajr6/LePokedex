@@ -5,15 +5,91 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="@color/fondo_principal">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+
+            <TextView
+                android:id="@+id/tituloPrincipal"
+                android:layout_width="316dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:fontFamily="@font/inter_bold"
+                android:text="@string/nombreApp"
+                android:textAlignment="center"
+                android:textColor="@color/principal"
+                android:textSize="50dp" />
+
+            <ImageView
+                android:id="@+id/imagenTituloPokeball"
+                android:layout_width="wrap_content"
+                android:layout_height="72dp"
+                android:layout_marginTop="25dp"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/pokeball" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+
+            <Spinner
+                android:id="@+id/spinnerFiltrar"
+                android:layout_width="270dp"
+                android:layout_height="35dp"
+                android:layout_gravity="center"
+                android:layout_marginLeft="25dp"
+                android:layout_weight="1"
+                android:background="@color/fonto_spinner" />
+
+
+
+            <Button
+                android:id="@+id/botonFiltrar"
+                android:layout_width="139dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="25dp"
+                android:layout_weight="1"
+                android:backgroundTint="@color/principal"
+                android:text="Filtrar"
+                android:fontFamily="@font/inter_medium"
+                android:textSize="18dp"
+                app:cornerRadius="13dp" />
+        </LinearLayout>
+
+        <ListView
+            android:id="@+id/lvPokemons"
+            android:layout_width="match_parent"
+            android:layout_height="379dp"
+            android:layout_margin="20dp" />
+
+        <Button
+            android:id="@+id/botonAnadirPokemon"
+            android:layout_width="228dp"
+            android:layout_height="57dp"
+            android:layout_gravity="center"
+            android:layout_margin="25dp"
+            android:layout_weight="1"
+            android:backgroundTint="@color/principal"
+            android:fontFamily="@font/inter_medium"
+            android:text="Nuevo Pokémon"
+            android:textSize="18dp"
+            app:cornerRadius="13dp" />
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
