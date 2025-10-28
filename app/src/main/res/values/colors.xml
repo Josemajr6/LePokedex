@@ -2,4 +2,11 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    // Declaración de colores para cada tipo de Pokemon
+    <color name="fuego">#EE8130</color>
+    <color name="agua">#6390F0</color>
+    <color name="electrico">#F7D02C</color>
+    <color name="planta">#7AC74C</color>
+    <color name="normal">#A8A77A</color>
 </resources>
