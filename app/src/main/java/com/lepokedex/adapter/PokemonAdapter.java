@@ -68,6 +68,9 @@ public class PokemonAdapter extends ArrayAdapter<Pokemon> {
             case "electrico" :
                 color =  ContextCompat.getColor(getContext(), R.color.electrico);
                 break;
+            case "planta" :
+                color =  ContextCompat.getColor(getContext(), R.color.planta);
+                break;
             case "normal" :
                 color =  ContextCompat.getColor(getContext(), R.color.normal);
                 break;
