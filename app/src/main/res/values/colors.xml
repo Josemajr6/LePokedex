@@ -9,7 +9,9 @@
     <color name="electrico">#F7D02C</color>
     <color name="planta">#7AC74C</color>
     <color name="normal">#A8A77A</color>
+
+    // Delacaración de colores para el diseño de la aplicación
     <color name="principal">#3B4CCA</color>
     <color name="fondo_principal">#D7DCF5</color>
-    <color name="fonto_spinner">#EBEEFA</color>
+    <color name="fondo_spinner">#EBEEFA</color>
 </resources>
