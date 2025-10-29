@@ -12,4 +12,11 @@
     <color name="principal">#3B4CCA</color>
     <color name="fondo_principal">#D7DCF5</color>
     <color name="fonto_spinner">#EBEEFA</color>
+
+    // Declaración de colores para valores
+    <color name="hp">#64477d</color>
+    <color name="ataque">#d34037</color>
+    <color name="defensa">#2aa426</color>
+    <color name="velocidad">#fc36e1</color>
+
 </resources>
