@@ -1,3 +1,11 @@
 <resources>
     <string name="nombreApp">Le Pokedex</string>
+    <string name="nuevoPokemon">Nuevo Pokemon</string>
+
+    <string name="plNombre">Nombre</string>
+    <string name="plHP">HP</string>
+    <string name="plAtaque">Ataque</string>
+    <string name="plVelocidad">Velocidad</string>
+    <string name="plDefensa">Defensa</string>
+
 </resources>
