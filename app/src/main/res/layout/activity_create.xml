@@ -128,7 +128,7 @@
                 app:cornerRadius="13dp" />
 
             <Button
-                android:id="@+id/bntVolver"
+                android:id="@+id/btnVolver"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
