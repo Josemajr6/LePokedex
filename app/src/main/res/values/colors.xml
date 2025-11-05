@@ -22,6 +22,7 @@
     <color name="velocidad">#fc36e1</color>
 
     // Declaración de color para banner
-    <color name="fondo_new">#cca9dd</color>
+    <color name="fondo_nuevo">#8c90a0</color>
+    <color name="letrero_textColor">#d7dcf5</color>
 
 </resources>
