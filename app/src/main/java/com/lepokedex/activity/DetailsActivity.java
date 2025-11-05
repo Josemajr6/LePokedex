@@ -31,7 +31,7 @@ public class DetailsActivity extends AppCompatActivity {
 
         // Si el pokemon nos da null, entonces cerramos la actividad
         if (pokemon == null) {
-            Toast.makeText(this, "Error: No se pudo cargar el Pokemón", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Error: No se puede cargar el Pokemón", Toast.LENGTH_LONG).show();
             finish();
             return;
         }
@@ -92,7 +92,7 @@ public class DetailsActivity extends AppCompatActivity {
             public void onClick(View v) {
                 PopulateDatabase.listaPokemons.remove(pokemon);
 
-                Toast.makeText(DetailsActivity.this, "Pokemón eliminado", Toast.LENGTH_LONG).show();
+                Toast.makeText(DetailsActivity.this, "Pokemón eliminado de la pokedex", Toast.LENGTH_LONG).show();
                 finish();
             }
         });
