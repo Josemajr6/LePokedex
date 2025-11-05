@@ -49,6 +49,16 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(iCrearPokemon);
             }
         });
+
+        lvPokemons.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Pokemon p = listaPokemons.get(position);
+                Intent iDetalles = new Intent(MainActivity.this, DetailsActivity.class);
+                iDetalles.putExtra("pokemon", p);
+                startActivity(iDetalles);
+            }
+        });
     }
 
     // Como hemos puesto finish en activity_create tenemos que refrescar la lista al volver a esta pantalla desde CreateActivity

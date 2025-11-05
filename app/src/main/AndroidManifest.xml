@@ -25,6 +25,10 @@
             android:name=".activity.CreateActivity"
             android:label="Nuevo Pokémon" />
 
+        <activity
+            android:name=".activity.DetailsActivity"
+            android:label="Detalle del Pokémon" />
+
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />

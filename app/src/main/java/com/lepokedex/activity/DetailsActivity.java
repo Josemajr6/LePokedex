@@ -50,11 +50,11 @@ public class DetailsActivity extends AppCompatActivity {
 
         // Relleno los campos con los datos del pokemon
         tvNombrePokemon.setText(pokemon.getNombre());
-        tvTipo.setText(pokemon.getTipo());
-        tvHp.setText(pokemon.getHp());
-        tvAtaque.setText(pokemon.getAtaque());
-        tvDefensa.setText(pokemon.getDefensa());
-        tvVelocidad.setText(pokemon.getVelocidad());
+        tvTipo.setText("Tipo: " + pokemon.getTipo());
+        tvHp.setText(String.valueOf("HP: " + pokemon.getHp()));
+        tvAtaque.setText(String.valueOf("Ataque: " + pokemon.getAtaque()));
+        tvDefensa.setText(String.valueOf("Defensa: " + pokemon.getDefensa()));
+        tvVelocidad.setText(String.valueOf("Velocidad: " + pokemon.getVelocidad()));
 
         // Dependiendo del tipo ponemos una img o otra
         switch (pokemon.getTipo().toLowerCase()) {
