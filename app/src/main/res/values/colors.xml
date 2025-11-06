@@ -25,4 +25,6 @@
     <color name="fondo_nuevo">#8c90a0</color>
     <color name="letrero_textColor">#d7dcf5</color>
 
+    <color name="fondo_editar">#BF874C</color>
+
 </resources>
