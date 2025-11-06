@@ -89,7 +89,8 @@ public class MainActivity extends AppCompatActivity {
         lvPokemons.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Pokemon p = listaPokemons.get(position);
+                Pokemon p = (Pokemon) parent.getItemAtPosition(position);
+
                 Intent iDetalles = new Intent(MainActivity.this, DetailsActivity.class);
                 iDetalles.putExtra("pokemon", p);
                 startActivity(iDetalles);
