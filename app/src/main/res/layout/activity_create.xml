@@ -66,39 +66,39 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:inputType="text"
-                android:text="Nombre" />
+                android:hint="Nombre" />
 
             <EditText
                 android:id="@+id/etHP"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="text"
-                android:text="HP" />
+                android:inputType="number"
+                android:hint="HP" />
 
             <EditText
                 android:id="@+id/etAtaque"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="text"
-                android:text="Ataque" />
+                android:inputType="number"
+                android:hint="Ataque" />
 
             <EditText
                 android:id="@+id/etVelocidad"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="text"
-                android:text="Velocidad" />
+                android:inputType="number"
+                android:hint="Velocidad" />
 
             <EditText
                 android:id="@+id/etDefensa"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="text"
-                android:text="Defensa" />
+                android:inputType="number"
+                android:hint="Defensa" />
 
         </LinearLayout>
 
