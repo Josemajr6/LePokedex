@@ -12,11 +12,7 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Spinner;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 import com.lepokedex.R;
 import com.lepokedex.adapter.PokemonAdapter;
@@ -25,59 +21,46 @@ import com.lepokedex.model.Pokemon;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
-    ArrayAdapter<Pokemon> adapterDefaultPokemon;
+
+    // Declaramos las variables AQUÍ ARRIBA (Variables de Clase/Atributos)
+    // Esto es necesario para que el método 'filtrar' y 'onResume' puedan acceder a ellas.
+    private ArrayAdapter<Pokemon> adapterDefaultPokemon;
+    private ListView lvPokemons;
+    private Spinner spinnerFiltrar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Llamamos a populate() para añadir los Pokémons a la lista
         populate();
 
-        // De momento importamos la listView para que aparezcan los Pokémon y el botón de añadir Pokémon
-        ListView lvPokemons = findViewById(R.id.lvPokemons);
-        Button botonAnadirPokemon = findViewById(R.id.botonAnadirPokemon);
+        // Enlazamos las variables con los IDs del XML
+        lvPokemons = findViewById(R.id.lvPokemons);
+        spinnerFiltrar = findViewById(R.id.spinnerFiltrar);
         Button botonFiltrar = findViewById(R.id.botonFiltrar);
-        Spinner spinnerFiltrar = findViewById(R.id.spinnerFiltrar);
+        Button botonAnadirPokemon = findViewById(R.id.botonAnadirPokemon);
 
-        // Creamos el adapter para esta pantalla con la lista de Pokémons y la establecemos a lvPokemons
+        // Inicializamos el adaptador principal con toda la lista
         adapterDefaultPokemon = new PokemonAdapter(MainActivity.this, 0 , listaPokemons);
         lvPokemons.setAdapter(adapterDefaultPokemon);
 
+        // Configuramos el Spinner
         String[] tiposPokemon = { "Todos", "Fuego", "Agua", "Electrico", "Planta", "Normal" };
         ArrayAdapter<String> adapterSpinner = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, tiposPokemon);
         adapterSpinner.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerFiltrar.setAdapter(adapterSpinner);
 
+        // Listener del Botón Filtrar
         botonFiltrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Recogemos el valor seleccionado en el Spinner
-                String tipoSeleccionado = spinnerFiltrar.getSelectedItem().toString();
-
-                // Comprobamos la seleccion del usuario
-                if (tipoSeleccionado.equalsIgnoreCase("Todos")) {
-                    lvPokemons.setAdapter(adapterDefaultPokemon);
-                } else {
-                    ArrayList<Pokemon> listaFiltrada = new ArrayList<>();
-
-                    for (Pokemon p : listaPokemons) {
-                        if (p.getTipo().equalsIgnoreCase(tipoSeleccionado)) {
-                            listaFiltrada.add(p);
-                        }
-                    }
-
-                    // Creación de un Adapter con los pokemons filtrados para la lista
-                    ArrayAdapter<Pokemon> adapterFiltrado = new PokemonAdapter(MainActivity.this, 0, listaFiltrada);
-
-                    // Le asignamos el adapter nuevo a la lista de Pokemons
-                    lvPokemons.setAdapter(adapterFiltrado);
-                }
+                // Llamamos a nuestro método propio, mucho más limpio
+                filtrar();
             }
         });
 
-        // En el setOnClickListener del boton de añadir pokemon creamos un intent que vaya la vista de CreateActivity
+        // Listener del Botón Añadir
         botonAnadirPokemon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -86,9 +69,12 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        // Listener de la Lista (Click en un Pokémon)
         lvPokemons.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                // IMPORTANTE: Usamos parent.getItemAtPosition para coger el Pokémon correcto
+                // incluso si la lista está filtrada.
                 Pokemon p = (Pokemon) parent.getItemAtPosition(position);
 
                 Intent iDetalles = new Intent(MainActivity.this, DetailsActivity.class);
@@ -98,16 +84,47 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    // Como hemos puesto finish en activity_create tenemos que refrescar la lista al volver a esta pantalla desde CreateActivity
     @Override
     protected void onResume() {
         super.onResume();
+
+        // 1. Avisamos al adaptador principal de que puede haber datos nuevos
         if (adapterDefaultPokemon != null) {
             adapterDefaultPokemon.notifyDataSetChanged();
         }
+
+        // 2. Volvemos a aplicar el filtro automáticamente
+        // Esto hace que si añadiste un Pokémon de tipo "Fuego" y el filtro estaba en "Fuego",
+        // aparezca inmediatamente al volver.
+        filtrar();
     }
 
+    /**
+     * Método privado que contiene la lógica de filtrado.
+     * Lo sacamos aquí para poder usarlo desde el botón Y desde onResume.
+     */
+    private void filtrar() {
+        // Comprobación de seguridad por si el spinner aún no cargó
+        if (spinnerFiltrar == null || spinnerFiltrar.getSelectedItem() == null) return;
 
+        String tipoSeleccionado = spinnerFiltrar.getSelectedItem().toString();
 
+        if (tipoSeleccionado.equalsIgnoreCase("Todos")) {
+            // Si es "Todos", ponemos el adaptador original (el que tiene la lista completa)
+            lvPokemons.setAdapter(adapterDefaultPokemon);
+        } else {
+            // Si es un tipo concreto, creamos una lista temporal solo con esos
+            ArrayList<Pokemon> listaFiltrada = new ArrayList<>();
 
+            for (Pokemon p : listaPokemons) {
+                if (p.getTipo().equalsIgnoreCase(tipoSeleccionado)) {
+                    listaFiltrada.add(p);
+                }
+            }
+
+            // Creamos un adaptador temporal solo para mostrar los filtrados
+            PokemonAdapter adapterFiltrado = new PokemonAdapter(MainActivity.this, 0, listaFiltrada);
+            lvPokemons.setAdapter(adapterFiltrado);
+        }
+    }
 }
