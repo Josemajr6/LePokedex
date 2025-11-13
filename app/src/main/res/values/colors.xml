@@ -3,28 +3,31 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    // Declaración de colores para cada tipo de Pokemon
-    <color name="fuego">#EE8130</color>
+    <!-- Colores para tipos de Pokémon -->
+    <color name="fuego">#E58722</color>
     <color name="agua">#6390F0</color>
-    <color name="electrico">#F7D02C</color>
-    <color name="planta">#7AC74C</color>
+    <color name="electrico">#E8C327</color>
+    <color name="planta">#5CA333</color>
     <color name="normal">#A8A77A</color>
 
-    // Delacaración de colores para el diseño de la aplicación
+    <!-- Colores para tipos de Pokémon -->
     <color name="principal">#3B4CCA</color>
     <color name="fondo_principal">#D7DCF5</color>
+    <color name="fondo_campos">#f5f5f5</color>
     <color name="fondo_spinner">#EBEEFA</color>
 
-    // Declaración de colores para valores
+    <!-- Colores para tipos de Pokémon -->
+    <color name="tituloPrincipal">#212121</color>
+    <color name="tituloSecundario">#757575</color>
+
+    <!-- Colores para atributos -->
     <color name="hp">#64477d</color>
     <color name="ataque">#d34037</color>
-    <color name="defensa">#2aa426</color>
+    <color name="defensa">#27C922</color>
     <color name="velocidad">#fc36e1</color>
 
-    // Declaración de color para banner
+    <!-- Otros colores para vistas de crear y editar -->
     <color name="fondo_nuevo">#8c90a0</color>
     <color name="letrero_textColor">#d7dcf5</color>
-
     <color name="fondo_editar">#BF874C</color>
-
 </resources>
