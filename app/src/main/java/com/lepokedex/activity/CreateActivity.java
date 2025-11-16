@@ -26,6 +26,10 @@ public class CreateActivity extends AppCompatActivity {
     Button btnGuardar, btnVolver;
     TextView tvTitulo;
 
+    // Creamos unas constantes para los límites de los campos
+    private static final int MAX_LARGO_NOMBRE = 20;
+    private static final int MAX_VALOR_STAT = 500;
+
     // Definimos en un Array los tipos de Pokémon y creamos la instancia del pokémon a editar
     String[] tiposPokemon = { "Fuego", "Agua", "Electrico", "Planta", "Normal" };
     Pokemon pokemonAEditar = null;
@@ -116,12 +120,26 @@ public class CreateActivity extends AppCompatActivity {
         }
 
 
+        // Controlamos que el nombre no supere el límite de caracteres
+        if (strNombre.length() > MAX_LARGO_NOMBRE) {
+            Toast.makeText(getApplicationContext(), "El nombre no puede superar los " + MAX_LARGO_NOMBRE + " caracteres.", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         try {
             // Convertimos los stats a int
             int hp = Integer.parseInt(strHP);
             int ataque = Integer.parseInt(strAtaque);
             int defensa = Integer.parseInt(strDefensa);
             int velocidad = Integer.parseInt(strVelocidad);
+
+
+            // Controlamos que los stats no superen el límite
+            if (hp > MAX_VALOR_STAT || ataque > MAX_VALOR_STAT || defensa > MAX_VALOR_STAT || velocidad > MAX_VALOR_STAT) {
+                Toast.makeText(getApplicationContext(), "Los stats no pueden superar el valor " + MAX_VALOR_STAT, Toast.LENGTH_SHORT).show();
+                return;
+            }
+
 
             // Si guardamos desde Nuevo Pokemon, se añade el pokemon a la lista con la función de añadirPokemon
             if (pokemonAEditar == null) {
